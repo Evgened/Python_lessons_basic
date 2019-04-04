@@ -17,7 +17,7 @@ __author__ = 'Евгений Шум'
 # Гуглил.. Надеюсь, не дичь.
 
 class AltMath:
-    def __init__ (self, x):
+    def __init__(self, x):
         self.x = x
     def __gt__ (self, other):
         return self.x <= other
