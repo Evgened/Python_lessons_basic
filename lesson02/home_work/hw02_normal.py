@@ -73,13 +73,10 @@ list1 = [1, 2, 4, 5, 6, 2, 5, 2]
 list2 = [] # неповторяющиеся элементы исходного списка
 list3 = [] # элементы исходного списка, которые не имеют повторений
 
+list2 = set(list1)
+print (list2)
+
 for i in list1:
-    try:
-        v1 = list2.index(i)
-    except ValueError:
-        list2.append(i)
     if list1.count(i) == 1:
         list3.append(i)
-
-print(list2)
 print(list3)
