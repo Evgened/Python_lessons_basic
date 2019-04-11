@@ -18,6 +18,46 @@
 # они получают удвоенную ЗП, пропорциональную норме.
 # Кол-во часов, которые были отработаны, указаны в файле "data/hours_of"
 
+import os, json
+workers_path = os.path.join('c:\GitRepo\Python_GeekBrain\lesson03\home_work\data', 'workers')
+hours_path = os.path.join('c:\GitRepo\Python_GeekBrain\lesson03\home_work\data', 'hours_of')
+
+list_workers = []
+list_hours = []
+n = 0
+with open(workers_path, 'r', encoding='UTF-8') as f:
+    for line in f.readlines():
+        if n > 0:
+            list_workers.append(line.split())
+        n +=1
+n = 0
+with open(hours_path, 'r', encoding='UTF-8') as f:
+    for line in f.readlines():
+        if n > 0:
+            list_hours.append(line.split())
+        n +=1
+
+total_hours = 0
+worker_salary = []
+
+def get_worker_salary (list_workers, name, surname):
+    for i in list_workers:
+        if i[0] == name and i[1] == surname:
+            return i
+topay = float(0)
+for i in list_hours:
+
+    w_salary = get_worker_salary (list_workers, i[0], i[1])
+
+    if int(i[2]) < int(w_salary[4]):
+        print ('Отработал меньше нормы: ', i[1], '. Отработано: ', i[2], ', норма: ', w_salary[4])
+        topay =  round(int(w_salary[2]) * int(i[2]) / int(w_salary[4]),2)
+        print('Выплатить: ', topay)
+    else:
+        print ('Отработал не меньше нормы: ', i[1], '. Отработано: ', i[2], ', норма: ', w_salary[4])
+        topay = round(int(w_salary[2]) + 2 * int(w_salary[2]) * ( int(i[2]) - int(w_salary[4])) / int (w_salary[4]),2)
+        print ('Выплатить: ', topay)
+    # worker_salary.append( list((list_workers[i][0], list_workers[i][1], list_hours[i][2])) )
 
 # Задание-3:
 # Дан файл ("data/fruits") со списком фруктов.
