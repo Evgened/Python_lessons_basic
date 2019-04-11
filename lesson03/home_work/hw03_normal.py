@@ -1,4 +1,4 @@
-# Задание-1:
+﻿# Задание-1:
 # Напишите функцию, возвращающую ряд Фибоначчи с n-элемента до m-элемента.
 # Первыми элементами ряда считать цифры 1 1
 
@@ -51,6 +51,22 @@ print(sort_to_max([2, 10, -12, 2.5, 20, -11, 4, 4, 0]))
 # Задача-3:
 # Напишите собственную реализацию стандартной функции filter.
 # Разумеется, внутри нельзя использовать саму функцию filter.
+
+def my_filter (cond, in_list):
+    b_list = list(map(cond, in_list))
+    out_list = []
+    n = 0
+    for i in range(len(in_list)):
+        if b_list[i]:
+            out_list.append(i)
+
+    return (out_list)
+
+v_list = [0,1,2,-4,-6,5]
+
+print(v_list)
+print(my_filter(lambda x: x>0, v_list))
+print(my_filter(lambda x: x%2 == 0, v_list))
 
 
 # Задача-4:
