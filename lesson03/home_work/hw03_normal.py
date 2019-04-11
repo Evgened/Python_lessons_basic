@@ -72,4 +72,30 @@ print(my_filter(lambda x: x%2 == 0, v_list))
 # Задача-4:
 # Даны четыре точки А1(х1, у1), А2(x2 ,у2), А3(x3 , у3), А4(х4, у4).
 # Определить, будут ли они вершинами параллелограмма.
+a1 = [1, 0]
+a2 = [5, 0]
+a3 = [7, 1]
+a4 = [3, 1]
+dots = [a1, a2, a3, a4]
 
+# функция вычисления расстояния между точками
+def dist (dot1, dot2):
+    return ((dot1[0]-dot2[0])**2 + (dot1[1]-dot2[1])**2)**(1/2)
+
+# получение списка расстояний между всеми четырьмя точками
+dist_list = []
+for i in range(4):
+    i_next = i+1 if i<3 else 0
+    dist_list.append(dist(dots[i], dots[i_next]))
+
+# функция проверки на параллелограммность
+def check_par (check_list):
+    check_list.sort()
+    if check_list[0]==check_list[1] and check_list[2]==check_list[3]:
+        return "Parallelogramm"
+    else:
+        return "Not Parallelogramm"
+
+print(dots)
+print(dist_list)
+print(check_par(dist_list))
