@@ -29,7 +29,7 @@ def fibonacci(n,m):
 # Для решения данной задачи нельзя использовать встроенную функцию и метод sort()
 
 def sort_to_max(origin_list):
-    # пузырёк так пузырёк
+    # пузырёк
     v_origin_list = list(origin_list)
     v_sort_list = []
     list_len = len(v_origin_list)
@@ -37,11 +37,11 @@ def sort_to_max(origin_list):
     v_min_pos = 0
 
     for i in range(list_len):
-        v_min = float(v_origin_list[0])
+        v_min = v_origin_list[0]
         v_min_pos = 0
         for j in range(list_len - i):
-            if float(v_origin_list[j]) < v_min:
-                v_min = float(v_origin_list[j])
+            if v_origin_list[j] < v_min:
+                v_min = v_origin_list[j]
                 v_min_pos = j
         v_sort_list.append(v_origin_list.pop(v_min_pos))
     return v_sort_list
