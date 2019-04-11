@@ -53,11 +53,11 @@ print(sort_to_max([2, 10, -12, 2.5, 20, -11, 4, 4, 0]))
 # Разумеется, внутри нельзя использовать саму функцию filter.
 
 def my_filter (cond, in_list):
-    b_list = list(map(cond, in_list))
     out_list = []
     n = 0
-    for i in range(len(in_list)):
-        if b_list[i]:
+
+    for i in in_list:
+        if cond(i):
             out_list.append(i)
 
     return (out_list)
@@ -66,7 +66,6 @@ v_list = [0,1,2,-4,-6,5]
 
 print(v_list)
 print(my_filter(lambda x: x>0, v_list))
-print(my_filter(lambda x: x%2 == 0, v_list))
 
 
 # Задача-4:
