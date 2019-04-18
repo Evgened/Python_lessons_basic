@@ -13,3 +13,22 @@
 # Для решения данной задачи используйте алгоритмы из задания easy,
 # оформленные в виде соответствующих функций,
 # и импортированные в данный файл из easy.py
+
+import hw05_easy as hw
+
+intro = "1. Перейти в папку\n2. Просмотреть содержимое текущей папки\n3. Удалить папку\n4. Создать папку\n0. Выход\n"
+# При выборе пунктов 1, 3, 4 программа запрашивает название папки
+answer = ''
+
+while answer != '0':
+    answer = input (intro)
+    if answer in ('1', '3', '4'):
+        dirname = input ('Введите название папки: ')
+        if answer == '1':
+            print (hw.set_dir(dirname))
+        elif answer == '3':
+            print(hw.del_dir(dirname))
+        elif answer == '4':
+            print(hw.create_dir(dirname))
+    elif answer == '2':
+        print (list(hw.list_dir()))
