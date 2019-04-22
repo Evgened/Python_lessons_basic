@@ -52,7 +52,7 @@ if __name__ == "__main__":
     # filename = sys.argv[0]
     filename = os.path.basename(sys.argv[0])
     copyfile(filename, filename[0:-3] + '_copy' + '.py')
-
+    # os.path.splittext(__file__)
     for i in range(9):
         print(del_dir('dir_' + str(i + 1)))
 
