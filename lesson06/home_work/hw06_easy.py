@@ -2,52 +2,58 @@
 # Определить методы, позволяющие вычислить: площадь, высоту и периметр фигуры.
 import math
 
-
 class Dot:
-    single_dot: []
+    __dot: []
 
-    def __init__(self, dot: list):
-        self.single_dot = dot
+    def __init__ (self, coord):
+        self.set_dot(coord)
 
     def set_dot(self, dot):
-        if len(i) != 2:
+        if len(dot) != 2:
             print ('Координат точки должно быть две')
             return
-        elif dot[0] == None or dot[1] == None:
+        elif dot[0] == '' or dot[1] == '':
             print ('Координата точки не может быть пустой')
             return
-        self.single_dot = dot
+        self.__dot = dot
 
+    def get_dot_dist (self, dot2):
+        return (math.sqrt((dot2[0] - self[0])**2 + (dot2[1] - self[1])**2))
+
+    @property
+    def get_dot (self):
+        return self.__dot
 
 class Triangle (Dot):
-    dots: list([Dot.single_dot, Dot.single_dot, Dot.single_dot])
+    __dots: []
+
+    def __init__(self, tr_dots):
+        self.set_dots(tr_dots)
 
     def set_dots(self, dots_list: list):
         if len(dots_list) != 3:
             print ('Треугольник задаётся тремя координатами')
             return
-        for i in dots_list:
-            if len(i) != 2:
-                print ('Координат точки должно быть две')
-                return
-        self.dots = dots_list
+        self.__dots = dots_list
 
     @property
     def get_square (self):
-        return (abs((self.dots[1][0] - self.dots[0][0])*(self.dots[2][1] - self.dots[0][1]) - (self.dots[2][0] - self.dots[0][0])*(self.dots[1][1] - self.dots[0][1])) / 2)
-
-    def get_len (dot1, dot2):
-        return (math.sqrt((dot2[0] - dot1[0])**2 + (dot2[1] - dot1[1])**2))
+        return (abs((self.__dots[1][0] - self.__dots[0][0])*(self.__dots[2][1] - self.__dots[0][1]) - (self.__dots[2][0] - self.__dots[0][0])*(self.__dots[1][1] - self.__dots[0][1])) / 2)
 
     @property
     def get_perim (self):
-        return(Triangle.get_len (self.dots[0], self.dots[1]) + Triangle.get_len (self.dots[0], self.dots[2]) + Triangle.get_len (self.dots[1], self.dots[2]))
+        return Dot.get_dot_dist(self.__dots[0], self.__dots[1]) + Dot.get_dot_dist(self.__dots[0], self.__dots[2]) + Dot.get_dot_dist(self.__dots[0], self.__dots[2])
 
-tr = Triangle()
+d1 = Dot([-10, 0])
+d2 = Dot([0, 10])
+d3 = Dot([0, 0])
 
-tr.dots = list([[-10, 0], [0, 10], [0, 0]])
-tr.set_dots(tr.dots)
+tr_dots = [d1.get_dot, d2.get_dot, d3.get_dot]
+print (tr_dots)
 
+tr = Triangle(tr_dots)
+# задаём список точек треугольника
+tr.set_dots(tr_dots)
 print ('Площадь треугольника: ', tr.get_square)
 print ('Периметр треугольника: ', tr.get_perim)
 
