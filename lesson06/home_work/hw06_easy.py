@@ -2,8 +2,25 @@
 # Определить методы, позволяющие вычислить: площадь, высоту и периметр фигуры.
 import math
 
-class Triangle:
-    dots: list([list, list, list])
+
+class Dot:
+    single_dot: []
+
+    def __init__(self, dot: list):
+        self.single_dot = dot
+
+    def set_dot(self, dot):
+        if len(i) != 2:
+            print ('Координат точки должно быть две')
+            return
+        elif dot[0] == None or dot[1] == None:
+            print ('Координата точки не может быть пустой')
+            return
+        self.single_dot = dot
+
+
+class Triangle (Dot):
+    dots: list([Dot.single_dot, Dot.single_dot, Dot.single_dot])
 
     def set_dots(self, dots_list: list):
         if len(dots_list) != 3:
