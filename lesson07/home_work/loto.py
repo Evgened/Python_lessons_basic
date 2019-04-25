@@ -57,3 +57,66 @@
 модуль random: http://docs.python.org/3/library/random.html
 
 """
+
+import random
+# import array
+from array import *
+
+# class Card:
+#     lotto_card: array.array
+#     pass
+
+row_cnt = 3
+col_cnt = 9
+
+sorted_matrix = []
+n = 0
+max_num = 15
+new_num: str
+matrix = []
+while n < max_num:
+    new_num = '{:>2}'.format(random.randint(1,90))
+    if matrix.count(new_num) == 0:
+        matrix.append(new_num)
+        n +=1
+
+for i in range(row_cnt):
+    n = max_num / row_cnt
+    part_matrix = matrix[ int(i*n):int((i+1)*n)]
+    part_matrix.sort()
+
+    for i in range(4):
+        part_matrix.insert(random.randint(0,len(part_matrix)), '  ')
+
+    sorted_matrix = sorted_matrix + part_matrix
+
+print (matrix)
+print (sorted_matrix)
+
+# "-----------------------------"
+# "| {} {} {} {} {} {} {} {} {} |"
+# "| {} {} {} {} {} {} {} {} {} |"
+# "| {} {} {} {} {} {} {} {} {} |"
+# "-----------------------------"
+
+row_pattern =  "|" + " {}" * col_cnt + "|"
+row_len = len(row_pattern)
+row_line = "-" * row_len
+rp = row_pattern + "\n"
+rl = row_line + "\n"
+
+full_pattern = rl + rp * 3 + rl
+
+print(full_pattern.format(*sorted_matrix))
+
+Что осталось:
+- сделать класс "Карточка", содержащий
+-- геттер (заполнитель) карточки, т.е. заполнение обычного списка. Алгоритм заполнения сделал выше.
+-- метод для "вычеркивания" угаданных чисел. Реализуется поиском по списку и заменой найденного числа на '--'
+-- интерфейс для вывода карточки, алгоритм сделал выше
+
+- создать два списка
+- запустить цикл от 1 до 90, в котором:
+-- вызываю метод "вычеркивания" выпавшего числа
+-- вызываю вывод на печать обоих карточек
+
