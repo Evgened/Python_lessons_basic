@@ -2,33 +2,52 @@
 # Определить методы, позволяющие вычислить: площадь, высоту и периметр фигуры.
 import math
 
+# Задача-1: Написать класс для фигуры-треугольника, заданного координатами трех точек.
+# Определить методы, позволяющие вычислить: площадь, высоту и периметр фигуры.
+import math
+
+
 class Dot:
-    __dot: []
+    __dot: list
 
-    def __init__ (self, coord):
-        self.set_dot(coord)
+    def __init__(self, value):
+        self.__dot = []
+        self.set_dot(value)
 
-    def set_dot(self, dot):
-        if len(dot) != 2:
+    @property
+    def dot(self):
+        return self.__dot
+
+    @dot.setter
+    def dot(self, point):
+        self.set_dot(point)
+
+    def set_dot(self, point):
+        if len(point) != 2:
             print ('Координат точки должно быть две')
             return
-        elif dot[0] == '' or dot[1] == '':
+        elif point[0] == '' or point[1] == '':
             print ('Координата точки не может быть пустой')
             return
-        self.__dot = dot
+        self.__dot = point
 
     def get_dot_dist (self, dot2):
         return (math.sqrt((dot2[0] - self[0])**2 + (dot2[1] - self[1])**2))
 
-    @property
-    def get_dot (self):
-        return self.__dot
 
 class Triangle (Dot):
     __dots: []
 
     def __init__(self, tr_dots):
         self.set_dots(tr_dots)
+
+    @property
+    def dots (self):
+        return self.__dots
+
+    @dots.setter
+    def dots (self, dots_list: list):
+        self.set_dots(dots_list)
 
     def set_dots(self, dots_list: list):
         if len(dots_list) != 3:
@@ -44,18 +63,21 @@ class Triangle (Dot):
     def get_perim (self):
         return Dot.get_dot_dist(self.__dots[0], self.__dots[1]) + Dot.get_dot_dist(self.__dots[0], self.__dots[2]) + Dot.get_dot_dist(self.__dots[0], self.__dots[2])
 
+
 d1 = Dot([-10, 0])
 d2 = Dot([0, 10])
 d3 = Dot([0, 0])
 
-tr_dots = [d1.get_dot, d2.get_dot, d3.get_dot]
+# d1.dot = [-1, -1]
+
+tr_dots = [d1.dot, d2.dot, d3.dot]
 print (tr_dots)
 
 tr = Triangle(tr_dots)
 # задаём список точек треугольника
-tr.set_dots(tr_dots)
 print ('Площадь треугольника: ', tr.get_square)
 print ('Периметр треугольника: ', tr.get_perim)
+
 
 
 # Задача-2: Написать Класс "Равнобочная трапеция", заданной координатами 4-х точек.
